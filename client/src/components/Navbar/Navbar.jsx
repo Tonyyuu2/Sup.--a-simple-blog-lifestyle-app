@@ -1,17 +1,62 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import hamburgerMenuIcon from "./assets/Hamburger Menu 1.svg";
 import plusIcon from "./assets/icons8-add-50.png";
+import closeButton from './assets/Menu X 1.svg'
 
 function Navbar() {
+  const [openSideBar, setOpenSideBar] = useState(false);
+  console.log("openSideBar :", openSideBar);
+
   return (
     <>
       <nav className="w-screen h-20 bg-red-500 text-white ">
         {/* mobile view */}
         <div className="md:hidden">
           <div className="flex justify-between p-3 items-center ">
-            <img src={hamburgerMenuIcon} alt="" className="w-10 pt-2.5" />
+            {/* sidebar */}
+            {openSideBar && (
+              <div className="bg-[#F2F2F2] h-[50vh] w-1/2 rounded-xl">
+                <div className="flex justify-end p-3">
+                  <img
+                    src={closeButton}
+                    alt=""
+                    onClick={() => setOpenSideBar(!openSideBar)}
+                    className='w-7 transition ease-in-out delay-10 pt-2.5 hover:-translate-y-1 hover:scale-110 duration-300'
+                  />
+                </div>
+                <div className="flex flex-col ml-3 text-black">
+                  <Link
+                    to="/"
+                    className="p-2 mr-3 hover:bg-red-500 hover:text-white"
+                  >
+                    <p>Home</p>
+                  </Link>
+                  <Link
+                    to="/"
+                    className="p-2 mr-3 hover:bg-red-500 hover:text-white"
+                  >
+                    <p>Add A Post!</p>
+                  </Link>
+                  <Link
+                    to="/"
+                    className="p-2 mr-3 hover:bg-red-500 hover:text-white"
+                  >
+                    <p>Show All Posts!</p>
+                  </Link>
+                </div>
+              </div>
+            )}
+
+            {!openSideBar && (
+              <img
+                src={hamburgerMenuIcon}
+                alt=""
+                className="w-10 pt-2.5"
+                onClick={() => setOpenSideBar(!openSideBar)}
+              />
+            )}
             <h1 className="font-bold text-4xl items pl-5">Sup.</h1>
             <img
               src={plusIcon}
