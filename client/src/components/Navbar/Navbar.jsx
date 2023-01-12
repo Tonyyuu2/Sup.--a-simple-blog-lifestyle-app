@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import hamburgerMenuIcon from "./assets/Hamburger Menu 1.svg";
 import plusIcon from "./assets/icons8-add-50.png";
-import closeButton from './assets/Menu X 1.svg'
+import SideBar from "./SideBar";
 
 function Navbar() {
   const [openSideBar, setOpenSideBar] = useState(false);
@@ -17,38 +17,8 @@ function Navbar() {
           <div className="flex justify-between p-3 items-center ">
             {/* sidebar */}
             {openSideBar && (
-              <div className="bg-[#F2F2F2] h-[50vh] w-1/2 rounded-xl">
-                <div className="flex justify-end p-3">
-                  <img
-                    src={closeButton}
-                    alt=""
-                    onClick={() => setOpenSideBar(!openSideBar)}
-                    className='w-7 transition ease-in-out delay-10 pt-2.5 hover:-translate-y-1 hover:scale-110 duration-300'
-                  />
-                </div>
-                <div className="flex flex-col ml-3 text-black">
-                  <Link
-                    to="/"
-                    className="p-2 mr-3 hover:bg-red-500 hover:text-white"
-                  >
-                    <p>Home</p>
-                  </Link>
-                  <Link
-                    to="/"
-                    className="p-2 mr-3 hover:bg-red-500 hover:text-white"
-                  >
-                    <p>Add A Post!</p>
-                  </Link>
-                  <Link
-                    to="/"
-                    className="p-2 mr-3 hover:bg-red-500 hover:text-white"
-                  >
-                    <p>Show All Posts!</p>
-                  </Link>
-                </div>
-              </div>
+              <SideBar openSideBar={openSideBar} setOpenSideBar={setOpenSideBar}/>
             )}
-
             {!openSideBar && (
               <img
                 src={hamburgerMenuIcon}
