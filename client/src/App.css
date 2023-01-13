@@ -623,6 +623,32 @@ video {
   width: 100%;
 }
 
+.w-0 {
+  width: 0px;
+}
+
+.w-\[\] {
+  width: ;
+}
+
+.w-\[45\] {
+  width: 45;
+}
+
+.w-\[45em\] {
+  width: 45em;
+}
+
+.w-\[45\%\] {
+  width: 45%;
+}
+
+.-translate-x-full {
+  --tw-translate-x: -100%;
+  -webkit-transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+          transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .scale-125 {
   --tw-scale-x: 1.25;
   --tw-scale-y: 1.25;

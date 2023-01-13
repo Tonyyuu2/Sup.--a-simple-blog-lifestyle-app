@@ -1,3 +1,4 @@
+import {  } from "framer-motion";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -6,6 +7,8 @@ import plusIcon from "./assets/icons8-add-50.png";
 import SideBar from "./SideBar";
 
 function Navbar() {
+
+
   const [openSideBar, setOpenSideBar] = useState(false);
   console.log("openSideBar :", openSideBar);
 
@@ -17,7 +20,7 @@ function Navbar() {
           <div className="flex justify-between p-3 items-center ">
             {/* sidebar */}
             {openSideBar && (
-              <SideBar openSideBar={openSideBar} setOpenSideBar={setOpenSideBar}/>
+              <SideBar openSideBar={openSideBar} setOpenSideBar={setOpenSideBar} />
             )}
             {!openSideBar && (
               <img

@@ -1,16 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import './SideBar.css'
+
+const variants = {
+  open: { opacity: 1, x: 0 },
+  closed: { opacity: 0, x: "-100%" },
+};
 
 function SideBar({ openSideBar, setOpenSideBar }) {
   return (
     <>
-      <motion.aside initial={{ width: 0 }} animate={{ width: 300 }}>
+      <motion.aside initial={{ width: 0 }} animate={{ width: 250 }}>
         <motion.div
-          // initial={{width:0}}
-          // animate={{width:300}}
-          
-          className={`top-0 left-0 w-[40vw] bg-[#F2F2F2] text-black fixed h-full duration-500`}
+          animate={openSideBar ? "open" : "closed"}
+          variants={variants}
+          transition={{ duration: 0.5 }}
+          className={`top-0 left-0 w-[45%] bg-[#F2F2F2] text-black fixed h-full -translate-x-full transition-all `}
         >
           <div className="flex flex-col p-6">
             <div className="flex justify-end">
