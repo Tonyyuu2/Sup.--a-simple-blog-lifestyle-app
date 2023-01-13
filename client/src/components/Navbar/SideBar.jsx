@@ -22,6 +22,12 @@ function SideBar({ openSideBar, setOpenSideBar }) {
             <Link to="">
               <p>Home</p>
             </Link>
+            <Link to="">
+              <p>Show All Posts!</p>
+            </Link>
+            <Link to="">
+              <p>Add A Post!</p>
+            </Link>
           </div>
         </div>
       </div>

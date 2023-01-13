@@ -1119,6 +1119,14 @@ code {
     monospace;
 }
 
+.marker\:font-extrabold *::marker {
+  font-weight: 800;
+}
+
+.marker\:font-extrabold::marker {
+  font-weight: 800;
+}
+
 .hover\:-translate-y-1:hover {
   --tw-translate-y: -0.25rem;
   -webkit-transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
