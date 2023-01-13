@@ -1,12 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-
-
 function SideBar({ openSideBar, setOpenSideBar }) {
   return (
     <>
-      <div className={`top-0 left-0 w-[40vw] bg-[#F2F2F2] text-black fixed h-full ease-in-out duration-300`}>
+      <div
+        className={`top-0 left-0 w-[40vw] bg-[#F2F2F2] text-black fixed h-full duration-500 transition-all ${
+          openSideBar ? "left-0" : "-left-full"
+        }`}
+      >
         <div className="flex flex-col p-6">
           <div className="flex justify-end">
             <button

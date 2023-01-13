@@ -671,6 +671,14 @@ video {
   bottom: 5em;
 }
 
+.-left-full {
+  left: -100%;
+}
+
+.-right-full {
+  right: -100%;
+}
+
 .z-40 {
   z-index: 40;
 }
@@ -1067,6 +1075,12 @@ video {
   transition-duration: 150ms;
 }
 
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
 .delay-150 {
   transition-delay: 150ms;
 }
@@ -1077,6 +1091,10 @@ video {
 
 .duration-200 {
   transition-duration: 200ms;
+}
+
+.duration-500 {
+  transition-duration: 500ms;
 }
 
 .ease-in {
