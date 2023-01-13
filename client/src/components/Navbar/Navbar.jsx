@@ -23,7 +23,7 @@ function Navbar() {
               <img
                 src={hamburgerMenuIcon}
                 alt=""
-                className="w-10 pt-2.5"
+                className="w-10 pt-2.5 cursor-pointer"
                 onClick={() => setOpenSideBar(!openSideBar)}
               />
             )}
@@ -31,7 +31,7 @@ function Navbar() {
             <img
               src={plusIcon}
               alt=""
-              className="w-10 transition ease-in-out delay-10 pt-2.5 hover:-translate-y-1 hover:scale-110 duration-300"
+              className="w-10 transition ease-in-out delay-10 pt-2.5 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer"
             />
           </div>
         </div>
