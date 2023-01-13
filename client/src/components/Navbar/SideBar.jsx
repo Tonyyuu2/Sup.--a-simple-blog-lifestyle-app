@@ -18,16 +18,26 @@ function SideBar({ openSideBar, setOpenSideBar }) {
               X
             </button>
           </div>
-          <div className="mt-5">
-            <Link to="">
-              <p>Home</p>
-            </Link>
-            <Link to="">
-              <p>Show All Posts!</p>
-            </Link>
-            <Link to="">
-              <p>Add A Post!</p>
-            </Link>
+          <div className="mt-5 font-bold text-xl hover:">
+
+            <div className="hover:bg-red-500 hover:text-white p-1 ">
+              <Link to="" className="">
+                <p>Home</p>
+              </Link>
+            </div>
+
+            <div className="hover:bg-red-500 hover:text-white p-1 ">
+              <Link to="">
+                <p>Show All Posts!</p>
+              </Link>
+            </div>
+
+            <div className="hover:bg-red-500 hover:text-white p-1 ">
+              <Link to="">
+                <p>Add A Post!</p>
+              </Link>
+            </div>
+            
           </div>
         </div>
       </div>
