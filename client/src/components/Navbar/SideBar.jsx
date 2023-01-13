@@ -1,19 +1,26 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
+
 
 function SideBar({ openSideBar, setOpenSideBar }) {
   return (
     <>
-      <div>
-        {openSideBar && (
-          <button
-            className="flex text-4xl text-black items-center cursor-pointer fixed  z-50"
-            onClick={() => setOpenSideBar(!openSideBar)}
-          >
-            x
-          </button>
-        )}
-        <div className="top-0 left-0 w-[35vw] bg-[#F2F2F2]  p-10 text-white fixed h-full ">
-          <h2 className="text-4xl font-semibold text-black">I am a sidebar</h2>
+      <div className={`top-0 left-0 w-[40vw] bg-[#F2F2F2] text-black fixed h-full ease-in-out duration-300`}>
+        <div className="flex flex-col p-6">
+          <div className="flex justify-end">
+            <button
+              className="font-extrabold text-2xl transition ease-in-out delay-10 hover:-translate-y-1 hover:scale-110 duration-300"
+              onClick={() => setOpenSideBar(!openSideBar)}
+            >
+              X
+            </button>
+          </div>
+          <div className="mt-5">
+            <Link to="">
+              <p>Home</p>
+            </Link>
+          </div>
         </div>
       </div>
     </>
