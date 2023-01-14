@@ -6,9 +6,9 @@ function PostListItems({ id, title, description, location, date, image }) {
 
   return (
     // card-container
-    <div className="flex flex-col w-auto h-auto bg-red-300  overflow-hidden p-5">
-      <div className="absolute bg-red-500 left-[25em] m-4 rounded-full text-center p-2 text-white font-bold text-xl">
-        <p>{newDate.toDateString()}</p>
+    <div className="flex flex-col w-auto h-auto bg-red-300  overflow-hidden p-5 relative">
+      <div className="absolute bg-red-500 left-[67%] md:left-[70%] m-2 rounded-full text-center p-3 text-white font-bold text-xl max-w-screen-sm">
+        <p className="">{newDate.toDateString()}</p>
       </div>
       <div className="md:w-[40em] md:flex md:items-center md:justify-center">
         <img src={image} alt="" />
