@@ -9,13 +9,12 @@ function Posts() {
 
   const postListItems = data.map((post) => {
     return (
-      <PostListItems {...post}/>
+      <PostListItems key={post.id} {...post}/>
     )
   })
 
-  
   return (
-    <div>
+    <div className='flex justify-center p-8'>
       {postListItems}
     </div>
   )
