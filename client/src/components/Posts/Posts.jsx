@@ -14,7 +14,7 @@ function Posts() {
   })
 
   return (
-    <div className='absolute flex flex-col justify-center items center p-8 gap-20 lg:left-[22.5%] md:left-[12.5%]'>
+    <div className='absolute flex flex-col justify-center items center p-8 gap-20 lg:left-[22.5%] md:left-[12.5%] mt-5'>
       {postListItems}
     </div>
   )
