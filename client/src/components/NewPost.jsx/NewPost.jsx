@@ -8,11 +8,10 @@ function NewPost() {
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
   const [date, setDate] = useState(currentDate);
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState("");
 
-  // validation(s):
-  const [imageUrl, setImageUrl] = useState('')
-  const [imageValid, setImageValid] = useState(false)
+
+
 
   return (
     <div className="flex justify-center items-center mt-6">
@@ -62,8 +61,14 @@ function NewPost() {
               type="url"
               value={image}
               onChange={(event) => setImage(event.target.value)}
-              placeholder='Add Link To Image'
+              placeholder="Add Link To Image"
+              pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"
+              onInvalid={(e) =>
+                e.target.setCustomValidity("Please Enter a Valid URL image.")
+              }
+              onInput={(e) => e.target.setCustomValidity("")}
             />
+            <button >hehe</button>
           </form>
         </div>
       </div>
