@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 
 function NewPost() {
+  const newDate = new Date();
+  const currentDate = newDate.toISOString().split("T")[0];
+
   const [title, setTitle] = useState("");
-  const [description, setDescription] = useState('')
+  const [description, setDescription] = useState("");
+  const [location, setLocation] = useState("");
+  const [date, setDate] = useState(currentDate);
 
   return (
     <div className="flex justify-center items-center mt-6">
@@ -26,8 +31,25 @@ function NewPost() {
               required
               type="text"
               value={description}
-              onChange={(event) => setTitle(event.target.value)}
+              autoComplete="off"
+              rows="5"
+              onChange={(event) => setDescription(event.target.value)}
               placeholder="What happened?"
+            />
+            <label>Location</label>
+            <input
+              required
+              type="text"
+              value={location}
+              onChange={(event) => setLocation(event.target.value)}
+              placeholder="Where at?"
+            />
+            <label>Date</label>
+            <input
+              required
+              type="date"
+              value={date}
+              onChange={(event) => setDate(event.target.value)}
             />
           </form>
         </div>
