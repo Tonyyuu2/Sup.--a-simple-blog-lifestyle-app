@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from "../Button/Button";
 
 function NewPost() {
   const newDate = new Date();
@@ -9,9 +10,6 @@ function NewPost() {
   const [location, setLocation] = useState("");
   const [date, setDate] = useState(currentDate);
   const [image, setImage] = useState("");
-
-
-
 
   return (
     <div className="flex justify-center items-center mt-6">
@@ -68,7 +66,10 @@ function NewPost() {
               }
               onInput={(e) => e.target.setCustomValidity("")}
             />
-            <button >hehe</button>
+            <div className="">
+              <Button children='Post' />
+              <Button children='Cancel' />
+            </div>
           </form>
         </div>
       </div>
