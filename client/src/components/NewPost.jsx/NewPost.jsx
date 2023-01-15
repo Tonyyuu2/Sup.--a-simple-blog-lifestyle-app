@@ -8,6 +8,11 @@ function NewPost() {
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
   const [date, setDate] = useState(currentDate);
+  const [image, setImage] = useState('');
+
+  // validation(s):
+  const [imageUrl, setImageUrl] = useState('')
+  const [imageValid, setImageValid] = useState(false)
 
   return (
     <div className="flex justify-center items-center mt-6">
@@ -50,6 +55,14 @@ function NewPost() {
               type="date"
               value={date}
               onChange={(event) => setDate(event.target.value)}
+            />
+            <label>Image</label>
+            <input
+              required
+              type="url"
+              value={image}
+              onChange={(event) => setImage(event.target.value)}
+              placeholder='Add Link To Image'
             />
           </form>
         </div>
