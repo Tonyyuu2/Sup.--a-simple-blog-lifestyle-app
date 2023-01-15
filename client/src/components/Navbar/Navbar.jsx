@@ -1,16 +1,12 @@
-import {  } from "framer-motion";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import hamburgerMenuIcon from "./assets/Hamburger Menu 1.svg";
 import plusIcon from "./assets/icons8-add-50.png";
 import SideBar from "./SideBar";
 
 function Navbar() {
-
-
   const [openSideBar, setOpenSideBar] = useState(false);
-  console.log("openSideBar :", openSideBar);
 
   return (
     <>
@@ -20,7 +16,10 @@ function Navbar() {
           <div className="flex justify-between p-3 items-center ">
             {/* sidebar */}
             {openSideBar && (
-              <SideBar openSideBar={openSideBar} setOpenSideBar={setOpenSideBar} />
+              <SideBar
+                openSideBar={openSideBar}
+                setOpenSideBar={setOpenSideBar}
+              />
             )}
             {!openSideBar && (
               <img
@@ -30,12 +29,16 @@ function Navbar() {
                 onClick={() => setOpenSideBar(!openSideBar)}
               />
             )}
-            <h1 className="font-bold text-4xl items pl-5">Sup.</h1>
-            <img
-              src={plusIcon}
-              alt=""
-              className="w-10 transition ease-in-out delay-10 pt-2.5 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer"
-            />
+            <NavLink exact="true" activeclassname="active" to="/">
+              <h1 className="font-bold text-4xl items pl-5">Sup.</h1>
+            </NavLink>
+            <NavLink exact="true" activeclassname="active" to="/new">
+              <img
+                src={plusIcon}
+                alt=""
+                className="w-10 transition ease-in-out delay-10 pt-2.5 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer"
+              />
+            </NavLink>
           </div>
         </div>
 

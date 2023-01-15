@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import './SideBar.css'
+import "./SideBar.css";
 
 const variants = {
   open: { opacity: 1, x: 0 },
@@ -30,7 +30,7 @@ function SideBar({ openSideBar, setOpenSideBar }) {
             </div>
             <div className="mt-5 font-bold text-xl hover:">
               <div className="hover:bg-red-500 hover:text-white p-1 transition ease-in-out delay-10 hover:-translate-y-1 hover:scale-100 duration-300 rounded-md mb-3">
-                <Link to="" className="">
+                <Link to="/" className="">
                   <p>Home</p>
                 </Link>
               </div>
@@ -42,7 +42,7 @@ function SideBar({ openSideBar, setOpenSideBar }) {
               </div>
 
               <div className="hover:bg-red-500 hover:text-white p-1 transition ease-in-out delay-10 hover:-translate-y-1 hover:scale-100 duration-300 rounded-md">
-                <Link to="">
+                <Link to="/new">
                   <p>Add A Post!</p>
                 </Link>
               </div>

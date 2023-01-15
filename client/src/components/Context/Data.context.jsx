@@ -1,10 +1,9 @@
-import { createContext, useState,  } from "react";
+import { createContext, useState } from "react";
 
 import { mockData } from "../../mockData";
 
 export const DataContext = createContext({
   data: [],
-  setData: () => {},
   addData: () => {},
 });
 
@@ -13,14 +12,10 @@ export const DataProvider = ({ children }) => {
   console.log("data :", data);
 
 
-  const addData = (newData) => {
-    setData((prev) => [...prev, newData])
-  }
 
   const value = {
     data,
-    setData,
-    addData,
+    addData: newData => setData((prev) => [...prev, newData]),
   };
 
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;

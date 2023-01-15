@@ -1,11 +1,12 @@
 import React from "react";
 
-function Button({ cancel, children }) {
+function Button({ cancel, children, onSubmit }) {
   return (
     <button
       className={`${
         cancel ? "bg-zinc-500" : "bg-red-500"
-      } w-32 p-1 text-center rounded-full font-bold text-white uppercase bg-`}
+      } w-32 p-1 text-center rounded-full font-bold text-white uppercase `}
+      onClick={onSubmit}
     >
       {children}
     </button>

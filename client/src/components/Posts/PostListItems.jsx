@@ -7,7 +7,7 @@ function PostListItems({ id, title, description, location, date, image }) {
   return (
     // card-container
     <div className="flex flex-col w-auto h-auto bg-red-300 overflow-hidden p-5 md:w-[680px]">
-      <div className="absolute bg-red-400 left-[64%] md:left-[65%] m-2 rounded-full text-center p-3 text-white font-bold text-xl ">
+      <div className="absolute bg-red-400 m-2 rounded-full text-center p-3 text-white font-bold text-xl ">
         <p>{newDate.toDateString()}</p>
       </div>
       <div className="md:w-[40em] md:flex md:items-center md:justify-center">
