@@ -7,7 +7,7 @@ function Posts() {
   const [data, setData] = useState(mockData);
 
   const postListItems = data.map((post) => {
-    return <PostListItems key={post.id} {...post} />;
+    return <PostListItems key={post.id} {...post} setData={setData} />;
   });
 
   return (

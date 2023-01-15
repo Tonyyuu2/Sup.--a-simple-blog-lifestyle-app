@@ -4,7 +4,13 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Navbar from './components/Navbar/Navbar';
 import NewPost from './components/NewPost.jsx/NewPost';
 
+// mock data
+import { mockData } from './mockData';
+
+
 function App() {
+
+  
   return (
     <div className="App">
       <Navbar />

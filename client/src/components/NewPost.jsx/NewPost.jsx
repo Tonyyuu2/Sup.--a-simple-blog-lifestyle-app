@@ -11,6 +11,20 @@ function NewPost() {
   const [date, setDate] = useState(currentDate);
   const [image, setImage] = useState("");
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const newData = {
+      title,
+      description,
+      location,
+      date,
+      image
+    }
+
+    
+  }
+
   return (
     <div className="flex justify-center items-center mt-6 mb-8 p-6">
       {/* card container */}
