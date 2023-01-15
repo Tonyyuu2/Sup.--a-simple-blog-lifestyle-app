@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Button from "../Button/Button";
+import { DataContext } from "../Context/Data.context";
 
 function NewPost() {
+  const { addData } = useContext(DataContext);
+
   const newDate = new Date();
   const currentDate = newDate.toISOString().split("T")[0];
 
@@ -19,11 +22,13 @@ function NewPost() {
       description,
       location,
       date,
-      image
-    }
+      image,
+    };
 
-    
-  }
+    addData(newData)
+
+
+  };
 
   return (
     <div className="flex justify-center items-center mt-6 mb-8 p-6">
@@ -86,7 +91,7 @@ function NewPost() {
               className="p-2 rounded-xl mb-3"
             />
             <div className="flex justify-center items-center p-3 mt-5 gap-4">
-              <Button children="Post" />
+              <Button children="Post" onClick={(event) => handleSubmit(event)}/>
               <Button children="Cancel" cancel={true} />
             </div>
           </form>

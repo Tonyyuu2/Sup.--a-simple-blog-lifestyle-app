@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 
-import { mockData } from "../../mockData";
+import { DataContext } from "../Context/Data.context";
 import PostListItems from "./PostListItems";
 
 function Posts() {
-  const [data, setData] = useState(mockData);
+  const { data } = useContext(DataContext);
 
   const postListItems = data.map((post) => {
-    return <PostListItems key={post.id} {...post} setData={setData} />;
+    return <PostListItems key={post.id} {...post} />;
   });
 
   return (
