@@ -12,23 +12,24 @@ function NewPost() {
   const [image, setImage] = useState("");
 
   return (
-    <div className="flex justify-center items-center mt-6">
+    <div className="flex justify-center items-center mt-6 mb-8 p-6">
       {/* card container */}
-      <div className="bg-red-300 w-8/12 md:w-[680px] h-auto p-6">
+      <div className="bg-red-300 w-8/12 md:w-[680px] h-auto p-6 rounded-xl">
         {/* form */}
-        <div className="flex flex-col">
-          <h1>Whatcha get up to?</h1>
+        <div className="flex flex-col gap-5">
+          <i className="font-bold text-white text-4xl">Whatcha get up to?</i>
 
           <form className="flex flex-col">
-            <label>Title</label>
+            <label className="font-bold text-lg">Title</label>
             <input
               required
               type="text"
               value={title}
               onChange={(event) => setTitle(event.target.value)}
               placeholder="Post Title"
+              className="p-2 rounded-xl mb-3"
             />
-            <label>Description</label>
+            <label className="font-bold text-lg">Description</label>
             <textarea
               required
               type="text"
@@ -37,23 +38,26 @@ function NewPost() {
               rows="5"
               onChange={(event) => setDescription(event.target.value)}
               placeholder="What happened?"
+              className="p-2 rounded-xl mb-3"
             />
-            <label>Location</label>
+            <label className="font-bold text-lg">Location</label>
             <input
               required
               type="text"
               value={location}
               onChange={(event) => setLocation(event.target.value)}
               placeholder="Where at?"
+              className="p-2 rounded-xl mb-3"
             />
-            <label>Date</label>
+            <label className="font-bold text-lg">Date</label>
             <input
               required
               type="date"
               value={date}
               onChange={(event) => setDate(event.target.value)}
+              className="p-2 rounded-xl mb-3"
             />
-            <label>Image</label>
+            <label className="font-bold text-lg">Image</label>
             <input
               required
               type="url"
@@ -65,10 +69,11 @@ function NewPost() {
                 e.target.setCustomValidity("Please Enter a Valid URL image.")
               }
               onInput={(e) => e.target.setCustomValidity("")}
+              className="p-2 rounded-xl mb-3"
             />
-            <div className="">
-              <Button children='Post' />
-              <Button children='Cancel' />
+            <div className="flex justify-center items-center p-3 mt-5 gap-4">
+              <Button children="Post" />
+              <Button children="Cancel" cancel={true} />
             </div>
           </form>
         </div>
