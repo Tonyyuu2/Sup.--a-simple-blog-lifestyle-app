@@ -2,13 +2,15 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Dashboard from './components/Dashboard/Dashboard';
 import Navbar from './components/Navbar/Navbar';
+import NewPost from './components/NewPost.jsx/NewPost';
 
 function App() {
   return (
     <div className="App">
       <Navbar />
       <Routes>
-        <Route path='/' element={<Dashboard />}/>
+        <Route index element={<Dashboard />}/>
+        <Route path='new' element={<NewPost />} />
       </Routes>
     </div>
   );
