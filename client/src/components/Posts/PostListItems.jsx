@@ -18,7 +18,7 @@ function PostListItems({ id, title, description, location, date, image }) {
       <div className="flex items-center justify-between">
         <h1 className="font-bold text-4xl mt-3 text-white">{title}</h1>
         <Link to={`/edit/${id}`}>
-        <FaRegEdit className="text-4xl transition ease delay-10 hover:-translate-y-1 hover:scale-100 duration-300 cursor-pointer text-red-600 mt-3" />
+          <FaRegEdit className="text-4xl transition ease delay-10 hover:-translate-y-1 hover:scale-100 duration-300 cursor-pointer text-red-600 mt-3" />
         </Link>
       </div>
       <i className="text-lg font-bold text-white mt-2">{location}</i>
