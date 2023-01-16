@@ -17,33 +17,64 @@ function NewPost() {
   const [date, setDate] = useState(currentDate);
   const [image, setImage] = useState("");
 
-
   const [error, setError] = useState({
-    
     titleError: false,
     descriptionError: false,
     locationError: false,
-    dateError: false, 
-    imageError: false
-  })
-  console.log('error :', error);
+    dateError: false,
+    imageError: false,
+  });
+  console.log("error :", error);
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (title === '' || title.length <= 5) {
-      const titleErrorNew = error.titleError = true 
-      setError(prev => ({...prev, titleErrorNew}))
-      return
+    if (title === "" || title.length <= 5) {
+      const titleErrorNew = (error.titleError = true);
+      setError((prev) => ({ ...prev, titleErrorNew }));
+      return;
     } else {
-      const titleErrorNew = error.titleError = false 
-      setError(prev => ({...prev, titleErrorNew}))
+      const titleErrorNew = (error.titleError = false);
+      setError((prev) => ({ ...prev, titleErrorNew }));
     }
 
-    if (description === '' || description.length <= 10) {
-      const newDescriptionError = error.descriptionError = true
-      setError(prev => ({...prev, newDescriptionError}))
-      return
+    if (description === "" || description.length <= 10) {
+      const newDescriptionError = (error.descriptionError = true);
+      setError((prev) => ({ ...prev, newDescriptionError }));
+      return;
+    } else {
+      const newDescriptionError = (error.descriptionError = false);
+      setError((prev) => ({ ...prev, newDescriptionError }));
+    }
+
+    if (location === "" || location.length <= 10) {
+      const newLocationError = (error.locationError = true);
+      setError((prev) => ({ ...prev, newLocationError }));
+      return;
+    } else {
+      const newLocationError = (error.locationError = false);
+      setError((prev) => ({ ...prev, newLocationError }));
+    }
+
+    if (date === "yyyy-mm-dd" || date > currentDate || date < currentDate) {
+      const newDateError = (error.dateError = true);
+      setError((prev) => ({ ...prev, newDateError }));
+      return;
+    } else if (date === currentDate) {
+      const newDateError = (error.dateError = false);
+      setError((prev) => ({ ...prev, newDateError }));
+    }
+
+    const regex =
+      /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
+
+    if (image === "" || image.length <= 50 || !image.match(regex)) {
+      const newImageError = (error.imageError = true);
+      setError((prev) => ({ ...prev, newImageError }));
+      return;
+    } else if (date === currentDate) {
+      const newImageError = (error.imageError = false);
+      setError((prev) => ({ ...prev, newImageError }));
     }
 
     const newData = {
@@ -75,7 +106,7 @@ function NewPost() {
               placeholder="Post Title"
               className="p-2 rounded-xl mb-3"
             />
-            {error.titleError && <ErrorHandling title={true}/>}
+            {error.titleError && <ErrorHandling title={true} />}
             <label className="font-bold text-lg">Description</label>
             <textarea
               required
@@ -87,7 +118,7 @@ function NewPost() {
               placeholder="What happened?"
               className="p-2 rounded-xl mb-3"
             />
-            {error.descriptionError && <ErrorHandling description={true}/>}
+            {error.descriptionError && <ErrorHandling description={true} />}
             <label className="font-bold text-lg">Location</label>
             <input
               required
@@ -97,6 +128,7 @@ function NewPost() {
               placeholder="Where at?"
               className="p-2 rounded-xl mb-3"
             />
+            {error.locationError && <ErrorHandling location={true} />}
             <label className="font-bold text-lg">Date</label>
             <input
               required
@@ -105,6 +137,7 @@ function NewPost() {
               onChange={(event) => setDate(event.target.value)}
               className="p-2 rounded-xl mb-3"
             />
+            {error.dateError && <ErrorHandling date={true} />}
             <label className="font-bold text-lg">Image</label>
             <input
               required
@@ -119,6 +152,7 @@ function NewPost() {
               onInput={(e) => e.target.setCustomValidity("")}
               className="p-2 rounded-xl mb-3"
             />
+            {error.imageError && <ErrorHandling image={true} />}
             <div className="flex justify-center items-center p-3 mt-5 gap-4">
               <Button children="Post" onSubmit={handleSubmit} />
               <Button children="Cancel" cancel={true} />
