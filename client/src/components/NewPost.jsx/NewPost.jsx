@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../Button/Button";
 import { DataContext } from "../Context/Data.context";
+import ErrorHandling from "../ErrorHandling/ErrorHandling";
 
 function NewPost() {
   const { addData } = useContext(DataContext);
@@ -15,10 +16,35 @@ function NewPost() {
   const [location, setLocation] = useState("");
   const [date, setDate] = useState(currentDate);
   const [image, setImage] = useState("");
-  const [error, seterror] = useState(false)
+
+
+  const [error, setError] = useState({
+    
+    titleError: false,
+    descriptionError: false,
+    locationError: false,
+    dateError: false, 
+    imageError: false
+  })
+  console.log('error :', error);
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    if (title === '' || title.length <= 5) {
+      const titleErrorNew = error.titleError = true 
+      setError(prev => ({...prev, titleErrorNew}))
+      return
+    } else {
+      const titleErrorNew = error.titleError = false 
+      setError(prev => ({...prev, titleErrorNew}))
+    }
+
+    if (description === '' || description.length <= 10) {
+      const newDescriptionError = error.descriptionError = true
+      setError(prev => ({...prev, newDescriptionError}))
+      return
+    }
 
     const newData = {
       title,
@@ -49,6 +75,7 @@ function NewPost() {
               placeholder="Post Title"
               className="p-2 rounded-xl mb-3"
             />
+            {error.titleError && <ErrorHandling title={true}/>}
             <label className="font-bold text-lg">Description</label>
             <textarea
               required
@@ -60,6 +87,7 @@ function NewPost() {
               placeholder="What happened?"
               className="p-2 rounded-xl mb-3"
             />
+            {error.descriptionError && <ErrorHandling description={true}/>}
             <label className="font-bold text-lg">Location</label>
             <input
               required
