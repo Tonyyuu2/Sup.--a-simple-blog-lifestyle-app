@@ -1,5 +1,6 @@
 import React from "react";
 import { FaRegEdit } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function PostListItems({ id, title, description, location, date, image }) {
   const datePart = date.split("-");
@@ -16,7 +17,9 @@ function PostListItems({ id, title, description, location, date, image }) {
       </div>
       <div className="flex items-center justify-between">
         <h1 className="font-bold text-4xl mt-3 text-white">{title}</h1>
-        <FaRegEdit className="text-4xl transition ease delay-10 hover:-translate-y-1 hover:scale-100 duration-300 cursor-pointer text-white mt-3"/>
+        <Link to={`/edit/${id}`}>
+        <FaRegEdit className="text-4xl transition ease delay-10 hover:-translate-y-1 hover:scale-100 duration-300 cursor-pointer text-red-600 mt-3" />
+        </Link>
       </div>
       <i className="text-lg font-bold text-white mt-2">{location}</i>
       <p className="font-bold pb-4 pt-5 text-lg">{description}</p>
