@@ -15,7 +15,7 @@ function NewPost() {
   const [location, setLocation] = useState("");
   const [date, setDate] = useState(currentDate);
   const [image, setImage] = useState("");
-  // const [error, seterror] = useState(false)
+  const [error, seterror] = useState(false)
 
   const handleSubmit = (event) => {
     event.preventDefault();
