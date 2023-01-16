@@ -22,20 +22,21 @@ function EditPost() {
   useEffect(() => {
 
     const filteredData = data.filter((post) => post.id === id)
-    console.log('filteredData :', filteredData);
 
     setInfo({
-      id: filteredData[0].id,
-      title: filteredData[0].title,
-      description: filteredData[0].description,
-      location: filteredData[0].location,
+      id: filteredData[0]?.id,
+      title: filteredData[0]?.title,
+      description: filteredData[0]?.description,
+      location: filteredData[0]?.location,
+      date: filteredData[0]?.date,
+      image: filteredData[0]?.image,
 
     })
   }, [])
 
 
   return (
-    <div>EditPost</div>
+    <div>{info.title}</div>
   )
 }
 
