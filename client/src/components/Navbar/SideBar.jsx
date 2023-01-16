@@ -23,26 +23,32 @@ function SideBar({ openSideBar, setOpenSideBar }) {
             <div className="flex justify-end">
               <button
                 className="font-extrabold text-2xl transition ease-in-out delay-10 hover:-translate-y-1 hover:scale-110 duration-300"
-                onClick={() => setOpenSideBar(!openSideBar)}
+                onClick={() => {
+                  setOpenSideBar(!openSideBar);
+                }}
               >
                 X
               </button>
             </div>
             <div className="mt-5 font-bold text-xl hover:">
               <div className="hover:bg-red-500 hover:text-white p-1 transition ease-in-out delay-10 hover:-translate-y-1 hover:scale-100 duration-300 rounded-md mb-3">
-                <Link to="/" className="">
+                <Link
+                  to="/"
+                  className=""
+                  onClick={() => {
+                    setOpenSideBar(!openSideBar);
+                  }}
+                >
                   <p>Home</p>
                 </Link>
               </div>
-
-              <div className="hover:bg-red-500 hover:text-white p-1 transition ease-in-out delay-10 hover:-translate-y-1 hover:scale-100 duration-300 rounded-md mb-3">
-                <Link to="">
-                  <p>Show All Posts!</p>
-                </Link>
-              </div>
-
               <div className="hover:bg-red-500 hover:text-white p-1 transition ease-in-out delay-10 hover:-translate-y-1 hover:scale-100 duration-300 rounded-md">
-                <Link to="/new">
+                <Link
+                  to="/new"
+                  onClick={() => {
+                    setOpenSideBar(!openSideBar);
+                  }}
+                >
                   <p>Add A Post!</p>
                 </Link>
               </div>

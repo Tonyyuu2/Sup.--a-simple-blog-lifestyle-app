@@ -4,9 +4,6 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Navbar from './components/Navbar/Navbar';
 import NewPost from './components/NewPost/NewPost';
 
-// mock data
-import { mockData } from './mockData';
-
 
 function App() {
 
