@@ -88,6 +88,10 @@ function NewPost() {
     navigate("/");
   };
 
+  const handleCancel = () => {
+    navigate('/')
+  }
+
   return (
     <div className="flex justify-center items-center mt-6 mb-8 p-6">
       {/* card container */}
@@ -155,7 +159,7 @@ function NewPost() {
             {error.imageError && <ErrorHandling image={true} />}
             <div className="flex justify-center items-center p-3 mt-5 gap-4">
               <Button children="Post" onSubmit={handleSubmit} />
-              <Button children="Cancel" cancel={true} />
+              <Button children="Cancel" cancel={true} onCancel={handleCancel}/>
             </div>
           </form>
         </div>
