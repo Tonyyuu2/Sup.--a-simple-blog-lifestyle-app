@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Dashboard from './components/Dashboard/Dashboard';
 import Navbar from './components/Navbar/Navbar';
-import NewPost from './components/NewPost.jsx/NewPost';
+import NewPost from './components/NewPost/NewPost';
 
 // mock data
 import { mockData } from './mockData';
