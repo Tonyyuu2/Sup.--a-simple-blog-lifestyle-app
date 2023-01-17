@@ -11,6 +11,7 @@ function EditPost() {
 
   const newDate = new Date();
   const currentDate = newDate.toISOString().split("T")[0];
+  console.log('currentDate :', currentDate);
 
 
   const [ info, setInfo ] = useState({

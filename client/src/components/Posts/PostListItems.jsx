@@ -3,14 +3,18 @@ import { FaRegEdit } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 function PostListItems({ id, title, description, location, date, image }) {
-  const datePart = date.split("-");
-  const newDate = new Date(datePart[0], datePart[1], datePart[2]);
+
+  
+  const dateFormat = () => {
+    const newDate = new Date(date).toDateString().split(' ')
+    return `${newDate[1]} ${newDate[2]} ${newDate[3]}`
+  }
 
   return (
     // card-container
     <div className="flex flex-col w-auto h-auto bg-red-300 overflow-hidden p-5 md:w-[680px]">
-      <div className="absolute bg-red-400 m-2 rounded-full text-center p-3 text-white font-bold text-xl ">
-        <p>{newDate.toDateString()}</p>
+      <div className="absolute bg-red-400 m-2 rounded-full text-center p-3 text-white font-bold text-sm ">
+        <p>{dateFormat()}</p>
       </div>
       <div className="md:w-[40em] md:flex md:items-center md:justify-center">
         <img src={image} alt="" />
