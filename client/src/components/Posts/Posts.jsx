@@ -7,7 +7,7 @@ function Posts() {
   const { data } = useContext(DataContext);
 
   const postListItems = data.map((post) => {
-    return <PostListItems key={post.id} {...post} />;
+    return <PostListItems key={post?._id} {...post} />;
   });
 
   return (

@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route index element={<Dashboard />} />
         <Route path="new" element={<NewPost />} />
-        <Route path="/edit/:id" element={<EditPost />} />
+        <Route path="/edit/:_id" element={<EditPost />} />
       </Routes>
     </div>
   );

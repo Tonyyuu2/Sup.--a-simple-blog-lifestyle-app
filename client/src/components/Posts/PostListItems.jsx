@@ -3,19 +3,15 @@ import { FaRegEdit  } from "react-icons/fa";
 import { AiOutlineDelete } from "react-icons/ai"
 import { Link, useNavigate } from "react-router-dom";
 import { DataContext } from "../Context/Data.context";
-import Button from "../Button/Button";
 
-function PostListItems({ id, title, description, location, date, image }) {
+function PostListItems({ _id, title, description, location, date, image }) {
 
   const { deleteData } = useContext(DataContext)
-
-  const navigate = useNavigate();
   
   const dateFormat = () => {
     const newDate = new Date(date).toDateString().split(' ')
     return `${newDate[1]} ${newDate[2]} ${newDate[3]}`
   }
-
 
   return (
     // card-container
@@ -29,12 +25,12 @@ function PostListItems({ id, title, description, location, date, image }) {
       <div className="flex items-center justify-between">
         <h1 className="font-bold text-4xl mt-3 text-white">{title}</h1>
         <div className="flex items-center gap-1">
-          <Link to={`/edit/${id}`}>
+          <Link to={`/edit/${_id}`}>
             <FaRegEdit className="text-4xl transition ease delay-10 hover:-translate-y-1 hover:scale-100 duration-300 cursor-pointer text-red-600 mt-3 " />
           </Link>
 
             <AiOutlineDelete
-              className="transition ease delay-10 hover:-translate-y-1 hover:scale-100 duration-300 cursor-pointer text-red-600 mt-3 text-4xl" onClick={() => deleteData(id)}
+              className="transition ease delay-10 hover:-translate-y-1 hover:scale-100 duration-300 cursor-pointer text-red-600 mt-3 text-4xl" onClick={() => deleteData(_id)}
             />
 
         </div>

@@ -1,32 +1,65 @@
+import { useEffect } from "react";
 import { createContext, useState } from "react";
 
-import { mockData } from "../../mockData";
+// import { mockData } from "../../mockData";
 
 export const DataContext = createContext({
   data: [],
-  addData: () => {},
-  editData: (id, updatedData) => {},
-  deleteData: (id) => {},
+  addData: (newData) => {},
+  editData: (_id, updatedData) => {},
+  deleteData: (_id) => {},
 });
 
 export const DataProvider = ({ children }) => {
-  const [data, setData] = useState(mockData);
+  const [data, setData] = useState([]);
+  console.log('data :', data);
+  console.log(data[0]?._id);
 
-  const updateData = (id, updatedData) => {
-    const withoutCurrentPost = data.filter((post) => post.id !== id);
+  useEffect(() => {
+    async function getPosts() {
+      const response = await fetch(`http://localhost:8080/posts`);
+
+      if (!response.ok) {
+        const message = `An error occurred: ${response.statusText}`;
+        window.alert(message);
+        return;
+      }
+      const posts = await response.json();
+      setData(posts);
+    }
+    getPosts();
+  }, []);
+
+  const updateData = (_id, updatedData) => {
+    const withoutCurrentPost = data.filter((post) => post?._id !== _id);
 
     setData([updatedData, ...withoutCurrentPost]);
   };
 
   const removeData = (id) => {
-    const postDeleter = data.filter((post) => post.id !== id);
+    const postDelete = data.filter((post) => post.id !== id);
 
-    setData([...postDeleter]);
+    setData([...postDelete]);
+  };
+
+  const createData = async (newData) => {
+    await fetch(`http://localhost:8080/posts`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newData),
+    }).catch((err) => {
+      window.alert(err);
+      return;
+    });
+
+    setData((prev) => [...prev, newData])
   };
 
   const value = {
     data,
-    addData: (newData) => setData((prev) => [...prev, newData]),
+    addData: createData,
     editData: updateData,
     deleteData: removeData,
   };

@@ -7,7 +7,6 @@ export const mockData = [
     location: "Somestreet 25, 12345 San Somewhere",
     date: "2021-05-12",
     image: "https://images.unsplash.com/photo-1670272502972-cccb4b96c4f4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-    isFeatured: false,
   },
   {
     id: "e2",

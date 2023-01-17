@@ -84,6 +84,8 @@ function NewPost() {
       date,
       image,
     };
+
+    
     addData(newData);
     navigate("/");
   };
