@@ -22,6 +22,7 @@ app.use("/posts", router);
 
 mongoose
   .connect(process.env.ATLAS_URI, {
+    dbName: 'sup-posts',
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

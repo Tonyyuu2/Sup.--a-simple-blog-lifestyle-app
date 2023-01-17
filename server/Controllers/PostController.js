@@ -10,6 +10,17 @@ export const getAllPosts = async (req, res) => {
   }
 };
 
+export const getOnePost = async (req, res) => {
+  const id = req.params.id;
+
+  const post = await PostModel.findById(id)
+  res.status(200).json(post)
+  try {
+  } catch (err) {
+    res.status(500).json(err)
+  }
+}
+
 export const createPost = async (req, res) => {
   const newPost = new PostModel(req.body);
 
