@@ -1,23 +1,22 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import Button from '../Button/Button';
-import { DataContext } from '../Context/Data.context'
-import ErrorHandling from '../ErrorHandling/ErrorHandling'
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import Button from "../Button/Button";
+import { DataContext } from "../Context/Data.context";
+import ErrorHandling from "../ErrorHandling/ErrorHandling";
 
 function EditPost() {
-
-  const { editData } = useContext(DataContext)
+  const { editData, dataSet, data } = useContext(DataContext);
 
   const newDate = new Date();
   const currentDate = newDate.toISOString().split("T")[0];
 
-  const [ info, setInfo ] = useState({
-    _id: '',
-    title: '',
-    description: '',
-    location: '',
-    date: '',
-    image: '',
+  const [info, setInfo] = useState({
+    _id: "",
+    title: "",
+    description: "",
+    location: "",
+    date: "",
+    image: "",
   });
 
   const [error, setError] = useState({
@@ -32,25 +31,22 @@ function EditPost() {
   const navigate = useNavigate();
 
   const { _id } = useParams();
-  console.log('_id :', _id);
+  console.log("_id :", _id);
 
   // const useableId = _id.toString()
 
   useEffect(() => {
-
     // const filteredData = data.filter((post) => post.id === _id)
 
     async function fetchPost() {
-      const response = await fetch(`http://localhost:8080/posts/${_id}`)
-      console.log('response :', response);
-      
+      const response = await fetch(`http://localhost:8080/posts/${_id}`);
+
       if (!response.ok) {
-        const message = `An error has occurred: ${response.statusText}`
-        window.alert(message)
+        const message = `An error has occurred: ${response.statusText}`;
+        window.alert(message);
         return;
       }
       const post = await response.json();
-
 
       setInfo({
         _id: post?._id,
@@ -59,15 +55,13 @@ function EditPost() {
         location: post?.location,
         date: post?.date,
         image: post?.image,
-      })
+      });
     }
 
-    fetchPost()
+    fetchPost();
+  }, []);
 
-
-  }, [])
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (info.title === "" || info.title.length <= 5) {
@@ -97,7 +91,11 @@ function EditPost() {
       setError((prev) => ({ ...prev, newLocationError }));
     }
 
-    if (info.date === "yyyy-mm-dd" || info.date > currentDate || info.date < currentDate) {
+    if (
+      info.date === "yyyy-mm-dd" ||
+      info.date > currentDate ||
+      info.date < currentDate
+    ) {
       const newDateError = (error.dateError = true);
       setError((prev) => ({ ...prev, newDateError }));
       return;
@@ -109,7 +107,11 @@ function EditPost() {
     const regex =
       /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
 
-    if (info.image === "" || info.image.length <= 50 || !info.image.match(regex)) {
+    if (
+      info.image === "" ||
+      info.image.length <= 50 ||
+      !info.image.match(regex)
+    ) {
       const newImageError = (error.imageError = true);
       setError((prev) => ({ ...prev, newImageError }));
       return;
@@ -124,17 +126,24 @@ function EditPost() {
       description: info.description,
       location: info.location,
       date: info.date,
-      image: info.image
+      image: info.image,
     };
 
-    editData(_id, newData)
+    await fetch(`http://localhost:8080/posts/${_id}`, {
+      method: "POST",
+      body: JSON.stringify(newData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    await editData(_id, newData);
     navigate("/");
   };
 
   const handleCancel = () => {
-    navigate('/')
-  }
-
+    navigate("/");
+  };
 
   return (
     <div className="flex justify-center items-center mt-6 mb-8 p-6">
@@ -149,10 +158,12 @@ function EditPost() {
             <input
               required
               type="text"
-              value={info?.title || ''}
-              onChange={(event) => setInfo((prev) => {
-                return {...prev, title: event.target.value}
-              })}
+              value={info?.title || ""}
+              onChange={(event) =>
+                setInfo((prev) => {
+                  return { ...prev, title: event.target.value };
+                })
+              }
               placeholder="Post Title"
               className="p-2 rounded-xl mb-3"
             />
@@ -161,12 +172,14 @@ function EditPost() {
             <textarea
               required
               type="text"
-              value={info?.description || ''}
+              value={info?.description || ""}
               autoComplete="off"
               rows="5"
-              onChange={(event) => setInfo((prev) => {
-                return {...prev, description: event.target.value}
-              })}
+              onChange={(event) =>
+                setInfo((prev) => {
+                  return { ...prev, description: event.target.value };
+                })
+              }
               placeholder="What happened?"
               className="p-2 rounded-xl mb-3"
             />
@@ -175,10 +188,12 @@ function EditPost() {
             <input
               required
               type="text"
-              value={info?.location || ''}
-              onChange={(event) => setInfo((prev) => {
-                return {...prev, location: event.target.value}
-              })}
+              value={info?.location || ""}
+              onChange={(event) =>
+                setInfo((prev) => {
+                  return { ...prev, location: event.target.value };
+                })
+              }
               placeholder="Where at?"
               className="p-2 rounded-xl mb-3"
             />
@@ -187,10 +202,12 @@ function EditPost() {
             <input
               required
               type="date"
-              value={info?.date || ''}
-              onChange={(event) => setInfo((prev) => {
-                return {...prev, date: event.target.value}
-              })}
+              value={info?.date || ""}
+              onChange={(event) =>
+                setInfo((prev) => {
+                  return { ...prev, date: event.target.value };
+                })
+              }
               className="p-2 rounded-xl mb-3"
             />
             {error.dateError && <ErrorHandling date={true} />}
@@ -198,10 +215,12 @@ function EditPost() {
             <input
               required
               type="url"
-              value={info?.image || ''}
-              onChange={(event) => setInfo((prev) => {
-                return {...prev, image: event.target.value}
-              })}
+              value={info?.image || ""}
+              onChange={(event) =>
+                setInfo((prev) => {
+                  return { ...prev, image: event.target.value };
+                })
+              }
               placeholder="Add Link To Image"
               pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"
               onInvalid={(e) =>
@@ -213,13 +232,13 @@ function EditPost() {
             {error.imageError && <ErrorHandling image={true} />}
             <div className="flex justify-center items-center p-3 mt-5 gap-4">
               <Button children="Post" onSubmit={handleSubmit} />
-              <Button children="Cancel" cancel={true} onCancel={handleCancel}/>
+              <Button children="Cancel" cancel={true} onCancel={handleCancel} />
             </div>
           </form>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default EditPost
+export default EditPost;

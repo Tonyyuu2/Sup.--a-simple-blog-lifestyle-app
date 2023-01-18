@@ -5,6 +5,7 @@ import { createContext, useState } from "react";
 
 export const DataContext = createContext({
   data: [],
+  dataSet: () => {},
   addData: (newData) => {},
   editData: (_id, updatedData) => {},
   deleteData: (_id) => {},
@@ -28,20 +29,13 @@ export const DataProvider = ({ children }) => {
     getPosts();
   }, []);
 
-  const updateData = async (_id, updatedData) => {
-    
-    await fetch(`http://localhost:8080/posts/${_id}`, {
-      method: "POST",
-      body: JSON.stringify(updatedData),
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    })
-    const withoutEdittedPost = data.filter((post) => post._id !== _id)
-    setData([updateData, ...withoutEdittedPost])
+  const updateData =  (_id, updatedData) => {
+
+  const newData = data.filter((post) => post._id !== _id) 
+  setData([updatedData, ...newData])
+
 
   };
-
 
   const removeData = (id) => {
     const postDelete = data.filter((post) => post.id !== id);
@@ -61,11 +55,12 @@ export const DataProvider = ({ children }) => {
       return;
     });
 
-    setData((prev) => [...prev, newData])
+    setData((prev) => [...prev, newData]);
   };
 
   const value = {
     data,
+    dataSet: () => {},
     addData: createData,
     editData: updateData,
     deleteData: removeData,
