@@ -13,7 +13,7 @@ export const DataContext = createContext({
 
 export const DataProvider = ({ children }) => {
   const [data, setData] = useState([]);
-
+  
   useEffect(() => {
     async function getPosts() {
       const response = await fetch(`http://localhost:8080/posts`);

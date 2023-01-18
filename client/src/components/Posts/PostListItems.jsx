@@ -6,6 +6,7 @@ import { DataContext } from "../Context/Data.context";
 
 function PostListItems({ _id, title, description, location, date, image }) {
 
+
   const { deleteData } = useContext(DataContext)
   
   const dateFormat = () => {
@@ -20,8 +21,6 @@ function PostListItems({ _id, title, description, location, date, image }) {
     await fetch(`http://localhost:8080/posts/${_id}`, {
       method: "DELETE",
     });
-
-    
   }
 
   return (

@@ -1,12 +1,28 @@
-import React, { useContext } from "react";
+import React, { useEffect, useState } from "react";
 
-import { DataContext } from "../Context/Data.context";
+
 import PostListItems from "./PostListItems";
 
 function Posts() {
-  const { data } = useContext(DataContext);
+  const [updatedData, setUpdatedData] = useState([])
 
-  const postListItems = data.map((post) => {
+
+  useEffect(() => {
+    async function getUpdatedPosts() {
+      const response = await fetch(`http://localhost:8080/posts`);
+
+      if (!response.ok) {
+        const message = `An error occurred: ${response.statusText}`;
+        window.alert(message);
+        return;
+      }
+      const posts = await response.json();
+      setUpdatedData(posts);
+    }
+    getUpdatedPosts();
+  })
+
+  const postListItems = updatedData.map((post) => {
     return <PostListItems key={post?._id} {...post} />;
   });
 
