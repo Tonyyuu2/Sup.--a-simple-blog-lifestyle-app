@@ -12,8 +12,6 @@ export const DataContext = createContext({
 
 export const DataProvider = ({ children }) => {
   const [data, setData] = useState([]);
-  console.log('data :', data);
-  console.log(data[0]?._id);
 
   useEffect(() => {
     async function getPosts() {
@@ -30,11 +28,20 @@ export const DataProvider = ({ children }) => {
     getPosts();
   }, []);
 
-  const updateData = (_id, updatedData) => {
-    const withoutCurrentPost = data.filter((post) => post?._id !== _id);
+  const updateData = async (_id, updatedData) => {
+    
+    await fetch(`http://localhost:8080/posts/${_id}`, {
+      method: "POST",
+      body: JSON.stringify(updatedData),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
+    const withoutEdittedPost = data.filter((post) => post._id !== _id)
+    setData([updateData, ...withoutEdittedPost])
 
-    setData([updatedData, ...withoutCurrentPost]);
   };
+
 
   const removeData = (id) => {
     const postDelete = data.filter((post) => post.id !== id);

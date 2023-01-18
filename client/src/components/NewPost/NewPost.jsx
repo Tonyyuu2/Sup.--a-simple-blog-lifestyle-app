@@ -24,7 +24,6 @@ function NewPost() {
     dateError: false,
     imageError: false,
   });
-  console.log("error :", error);
 
   const handleSubmit = (event) => {
     event.preventDefault();
