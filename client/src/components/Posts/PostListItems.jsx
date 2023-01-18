@@ -29,7 +29,7 @@ function PostListItems({ _id, title, description, location, date, image }) {
       <div className="absolute bg-red-400 m-2 rounded-full text-center p-3 text-white font-bold text-sm ">
         <p>{dateFormat()}</p>
       </div>
-      <div className="md:w-[40em] md:flex md:items-center md:justify-center">
+      <div className="md:w-[40em] md:flex md:items-center md:justify-center shadow-lg">
         <img src={image} alt="" />
       </div>
       <div className="flex items-center justify-between">

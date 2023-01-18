@@ -11,7 +11,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route index element={<Dashboard />} />
-        <Route path="new" element={<NewPost />} />
+        <Route path="/new" element={<NewPost />} />
         <Route path="/edit/:_id" element={<EditPost />} />
       </Routes>
     </div>

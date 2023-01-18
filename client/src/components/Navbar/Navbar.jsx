@@ -45,12 +45,11 @@ function Navbar() {
         {/* desktop - tablet view */}
         <div className="hidden md:inline">
           <div className="flex p-3 pl-12 justify-between">
-            <h1 className="flex font-bold text-5xl ">Sup.</h1>
-            <div className="flex justify-between w-1/3 p-6 lg:text-xl md:text-lg md:p-6 md:font-bold md:w-[20em]">
-              <Link to="">
-                <p>Show All Posts!</p>
-              </Link>
-              <Link to="">
+            <Link to='/'>
+              <h1 className="flex font-bold text-5xl ">Sup.</h1>
+            </Link>
+            <div className="flex justify-end w-1/3 p-6 lg:text-xl md:text-lg md:p-6 md:font-bold md:w-[20em]">
+              <Link to="/new">
                 <p>Add A Post!</p>
               </Link>
             </div>
