@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { FaRegEdit  } from "react-icons/fa";
 import { AiOutlineDelete } from "react-icons/ai"
-import { Link, useNavigate } from "react-router-dom";
+import { Link, } from "react-router-dom";
 import { DataContext } from "../Context/Data.context";
 
 function PostListItems({ _id, title, description, location, date, image }) {
@@ -12,6 +12,7 @@ function PostListItems({ _id, title, description, location, date, image }) {
     const newDate = new Date(date).toDateString().split(' ')
     return `${newDate[1]} ${newDate[2]} ${newDate[3]}`
   }
+
 
   return (
     // card-container

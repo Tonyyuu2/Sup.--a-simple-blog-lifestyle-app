@@ -29,16 +29,18 @@ export const DataProvider = ({ children }) => {
     getPosts();
   }, []);
 
-  const updateData =  (_id, updatedData) => {
-
-  const newData = data.filter((post) => post._id !== _id) 
-  setData([updatedData, ...newData])
-
-
+  const updateData = (_id, updatedData) => {
+    const newData = data.filter((post) => post._id !== _id);
+    setData([updatedData, ...newData]);
   };
 
-  const removeData = (id) => {
-    const postDelete = data.filter((post) => post.id !== id);
+  const removeData = async (_id) => {
+
+    await fetch(`http://localhost:8080/posts/${_id}`, {
+      method: "DELETE"
+    })
+
+    const postDelete = data.filter((post) => post._id !== _id);
 
     setData([...postDelete]);
   };

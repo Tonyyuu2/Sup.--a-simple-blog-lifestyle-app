@@ -5,7 +5,7 @@ import { DataContext } from "../Context/Data.context";
 import ErrorHandling from "../ErrorHandling/ErrorHandling";
 
 function EditPost() {
-  const { editData, dataSet, data } = useContext(DataContext);
+  const { editData } = useContext(DataContext);
 
   const newDate = new Date();
   const currentDate = newDate.toISOString().split("T")[0];
@@ -31,13 +31,9 @@ function EditPost() {
   const navigate = useNavigate();
 
   const { _id } = useParams();
-  console.log("_id :", _id);
-
-  // const useableId = _id.toString()
 
   useEffect(() => {
-    // const filteredData = data.filter((post) => post.id === _id)
-
+    
     async function fetchPost() {
       const response = await fetch(`http://localhost:8080/posts/${_id}`);
 
