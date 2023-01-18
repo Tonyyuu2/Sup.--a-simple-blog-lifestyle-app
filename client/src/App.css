@@ -1052,30 +1052,6 @@ textarea  {
 }
 
 @media (min-width: 776px) {
-  .awks\:left-\[\] {
-    left: ;
-  }
-
-  .awks\:left-\[10\%\] {
-    left: 10%;
-  }
-
-  .awks\:left-\[15\%\] {
-    left: 15%;
-  }
-
-  .awks\:left-\[8\%\] {
-    left: 8%;
-  }
-
-  .awks\:left-\[5\%\] {
-    left: 5%;
-  }
-
-  .awks\:left-\[4\%\] {
-    left: 4%;
-  }
-
   .awks\:left-\[3\%\] {
     left: 3%;
   }
