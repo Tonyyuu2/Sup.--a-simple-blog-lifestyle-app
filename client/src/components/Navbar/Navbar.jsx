@@ -10,7 +10,7 @@ function Navbar() {
 
   return (
     <>
-      <nav className="w-screen h-20 bg-red-500 text-white ">
+      <nav className="w-screen h-20 bg-red-500 text-white shadow-2xl">
         {/* mobile view */}
         <div className="md:hidden">
           <div className="flex justify-between p-3 items-center ">
