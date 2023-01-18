@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb";
 import PostModel from "../Models/postModel.js";
 
 export const getAllPosts = async (req, res) => {
@@ -23,6 +24,7 @@ export const getOnePost = async (req, res) => {
 
 export const createPost = async (req, res) => {
   const newPost = new PostModel(req.body);
+  console.log('newPost :', newPost);
 
   try {
     await newPost.save();
@@ -33,20 +35,20 @@ export const createPost = async (req, res) => {
 };
 
 export const updatePost = async (req, res) => {
-  const id = req.params.id;
+  const id = req.params._id;
   const post = await PostModel.findById(id);
 
   try {
     await post.updateOne({ $set: { ...req.body } });
-    res.status(200).json("Post Updated");
+    res.status(200).json("updated");
   } catch (err) {
     res.status(500).json(err);
   }
 };
 
 export const deletePost = async (req, res) => {
-  const id = req.params.id;
-  const post = await PostModel.findById(id);
+  const _id = req.params._id;
+  const post = await PostModel.findById(_id);
 
   try {
     await post.deleteOne();
