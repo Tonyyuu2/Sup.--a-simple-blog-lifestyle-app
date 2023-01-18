@@ -34,12 +34,7 @@ export const DataProvider = ({ children }) => {
     setData([updatedData, ...newData]);
   };
 
-  const removeData = async (_id) => {
-
-    await fetch(`http://localhost:8080/posts/${_id}`, {
-      method: "DELETE"
-    })
-
+  const removeData = (_id) => {
     const postDelete = data.filter((post) => post._id !== _id);
 
     setData([...postDelete]);

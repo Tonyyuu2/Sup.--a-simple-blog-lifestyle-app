@@ -13,6 +13,16 @@ function PostListItems({ _id, title, description, location, date, image }) {
     return `${newDate[1]} ${newDate[2]} ${newDate[3]}`
   }
 
+  const dataDelete = async (_id) => {
+
+    deleteData(_id)
+
+    await fetch(`http://localhost:8080/posts/${_id}`, {
+      method: "DELETE",
+    });
+
+    
+  }
 
   return (
     // card-container
@@ -31,7 +41,7 @@ function PostListItems({ _id, title, description, location, date, image }) {
           </Link>
 
             <AiOutlineDelete
-              className="transition ease delay-10 hover:-translate-y-1 hover:scale-100 duration-300 cursor-pointer text-red-600 mt-3 text-4xl" onClick={() => deleteData(_id)}
+              className="transition ease delay-10 hover:-translate-y-1 hover:scale-100 duration-300 cursor-pointer text-red-600 mt-3 text-4xl" onClick={() => dataDelete(_id)}
             />
 
         </div>
