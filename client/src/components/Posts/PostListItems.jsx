@@ -1,13 +1,14 @@
 import React, { useContext } from "react";
 import { FaRegEdit  } from "react-icons/fa";
 import { AiOutlineDelete } from "react-icons/ai"
-import { Link, } from "react-router-dom";
+import { Link, Navigate, useNavigate, } from "react-router-dom";
 import { DataContext } from "../Context/Data.context";
 
 function PostListItems({ _id, title, description, location, date, image }) {
 
 
   const { deleteData } = useContext(DataContext)
+  const navigate = useNavigate()
   
   const dateFormat = () => {
     const newDate = new Date(date).toDateString().split(' ')
@@ -18,9 +19,13 @@ function PostListItems({ _id, title, description, location, date, image }) {
 
     deleteData(_id)
 
-    await fetch(`http://localhost:8080/posts/${_id}`, {
+    await fetch(`https://sup-backend-4axq.onrender.com/posts/${_id}`, {
       method: "DELETE",
     });
+
+    navigate('/')
+
+    
   }
 
   return (

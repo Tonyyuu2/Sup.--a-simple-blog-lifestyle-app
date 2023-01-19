@@ -9,7 +9,7 @@ function Posts() {
 
   useEffect(() => {
     async function getUpdatedPosts() {
-      const response = await fetch(`http://localhost:8080/posts`);
+      const response = await fetch(`https://sup-backend-4axq.onrender.com/posts`);
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -17,10 +17,11 @@ function Posts() {
         return;
       }
       const posts = await response.json();
+      console.log('posts :', posts);
       setUpdatedData(posts);
     }
     getUpdatedPosts();
-  })
+  }, [updatedData])
 
   const postListItems = updatedData.map((post) => {
     return <PostListItems key={post?._id} {...post} />;

@@ -35,7 +35,7 @@ function EditPost() {
   useEffect(() => {
     
     async function fetchPost() {
-      const response = await fetch(`http://localhost:8080/posts/${_id}`);
+      const response = await fetch(`https://sup-backend-4axq.onrender.com/posts/${_id}`);
 
       if (!response.ok) {
         const message = `An error has occurred: ${response.statusText}`;
@@ -125,7 +125,7 @@ function EditPost() {
       image: info.image,
     };
 
-    await fetch(`http://localhost:8080/posts/${_id}`, {
+    await fetch(`https://sup-backend-4axq.onrender.com/posts/${_id}`, {
       method: "POST",
       body: JSON.stringify(newData),
       headers: {
