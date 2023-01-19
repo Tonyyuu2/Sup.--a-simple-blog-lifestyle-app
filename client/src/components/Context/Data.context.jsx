@@ -17,7 +17,6 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     async function getPosts() {
       const response = await fetch(`https://sup-backend-4axq.onrender.com/posts`);
-      console.log('response----- :', response.data);
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -25,7 +24,6 @@ export const DataProvider = ({ children }) => {
         return;
       }
       const posts = await response.json();
-      console.log('posts :', posts);
       setData(posts);
     }
     getPosts();
